@@ -101,8 +101,8 @@ def eval(loader, model, std, mean, device):
         targets = targets.to(device)
         output = model(inputs)
         
-        out_unnorm = output.detach().cpu().numpy()*std + mean
-        target_unnorm = targets.detach().cpu().numpy()*std + mean
+        out_unnorm = output.detach().cpu().numpy()*std[0] + mean[0]
+        target_unnorm = targets.detach().cpu().numpy()*std[0] + mean[0]
 
         mae_loss = masked_mae_np(target_unnorm, out_unnorm, 0)
         rmse_loss = masked_rmse_np(target_unnorm, out_unnorm, 0)
