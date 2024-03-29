@@ -2,6 +2,8 @@ import torch
 from torch import nn
 from torchdiffeq import odeint
 
+# 修改hidden_size
+
 class ODEFunc(nn.Module):
     def __init__(self, input_size, hidden_size):
         super(ODEFunc, self).__init__()
@@ -66,4 +68,5 @@ class LSTM_ODE(nn.Module):
                     torch.nn.init.xavier_uniform_(m._parameters[param])
                 elif "bias" in param:
                     m._parameters[param].data.fill_(0.01)
+
 
